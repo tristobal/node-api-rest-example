@@ -14,6 +14,7 @@ app.get("/", function(req, res){
   res.send("Hello world!");
 });
 
+
 mongoose.connect('mongodb://localhost/tvshows', function(err, res) {
   if(err) {
     console.log('ERROR: connecting to Database. ' + err);
@@ -21,6 +22,8 @@ mongoose.connect('mongodb://localhost/tvshows', function(err, res) {
     console.log('Connected to Database');
   }
 });
+
+routes = require('./routes/tvshows')(app);
 
 server.listen(3000, function(){
   console.log("Node server running on http://localhost:3000");
