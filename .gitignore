@@ -17,8 +17,7 @@
 ######################
 # Eclipse
 ######################
- 
-*.pydevproject
+ *.pydevproject
 .project
 .metadata
 */bin/**
@@ -37,7 +36,13 @@ local.properties
 # External tool builders
 .externalToolBuilders/
 
-# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
-hs_err_pid*
-/portal-empresa/*.springBeans
+######################
+# MAVEN
+######################
 /target/
+
+######################
+# NODE
+######################
+node_modules/
+npm-debug.log
