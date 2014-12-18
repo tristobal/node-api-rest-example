@@ -1,5 +1,6 @@
 var express = require("express");
 var http = require("http");
+var mongoose = require('mongoose');
 var app = express();
 var server = http.createServer(app);
 
@@ -11,6 +12,14 @@ app.configure(function() {
 
 app.get("/", function(req, res){
   res.send("Hello world!");
+});
+
+mongoose.connect('mongodb://localhost/tvshows', function(err, res) {
+  if(err) {
+    console.log('ERROR: connecting to Database. ' + err);
+  } else {
+    console.log('Connected to Database');
+  }
 });
 
 server.listen(3000, function(){
