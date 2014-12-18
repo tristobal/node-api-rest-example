@@ -1,3 +1,6 @@
+REST con NodeJS y MongoDB
+=========================
+
 API RESTful que usa Node.js, incluyendo la base de datos (MongoDB) y el plugin para conectarnos a ella y mapear los modelos (Mongoose).
 
 Express v3:
