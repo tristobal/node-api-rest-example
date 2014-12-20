@@ -10,12 +10,24 @@ app.configure(function() {
   app.use(app.router);
 });
 
+var routes = require('./routes/tvshows')(app);
+
 app.get("/", function(req, res){
-  res.send("Hello world!");
+
+  var routes = app.routes;
+  var rutas = "";
+  for (var verb in routes){
+    if (routes.hasOwnProperty(verb)) {
+      routes[verb].forEach(function(route){
+        rutas += verb + " : " +route['path'] + "<br/>";
+      });
+    }
+  }
+  res.send("Hello world!<br/>"  + rutas);
 });
 
 
-mongoose.connect('mongodb://localhost/tvshows', function(err, res) {
+mongoose.connect('mongodb://user_db:pass_db@ds029051.mongolab.com:29051/mongotest', function(err, res) {
   if(err) {
     console.log('ERROR: connecting to Database. ' + err);
   } else {
@@ -23,8 +35,6 @@ mongoose.connect('mongodb://localhost/tvshows', function(err, res) {
   }
 });
 
-routes = require('./routes/tvshows')(app);
-
-server.listen(3000, function(){
-  console.log("Node server running on http://localhost:3000");
+server.listen(process.env.PORT, function(){
+  console.log("Node server running.");
 });
